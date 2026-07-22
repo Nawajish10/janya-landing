@@ -1,4 +1,4 @@
-const fetch = require('node-fetch'); // Fallback if native fetch isn't available, but Vercel Node 18+ has native fetch. Actually we can just use native fetch if we don't require node-fetch. Wait, we don't have node-fetch in package.json. I will use native global fetch.
+// Native fetch is used (Node 18+)
 
 module.exports = async function handler(req, res) {
   // CORS Headers
@@ -133,7 +133,10 @@ module.exports = async function handler(req, res) {
           'Accept': 'application/json'
         },
         body: JSON.stringify(apiPayload)
-      }).then(r => r.json()).catch(err => console.error('API Error:', err))
+      }).then(async r => {
+        const text = await r.text();
+        try { return JSON.parse(text); } catch (e) { return text; }
+      }).catch(err => console.error('API Error:', err))
     );
 
     // Google Sheets Submit
@@ -144,7 +147,10 @@ module.exports = async function handler(req, res) {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: new URLSearchParams(sheetsPayload).toString()
-      }).then(r => r.json()).catch(err => console.error('Sheets Error:', err))
+      }).then(async r => {
+        const text = await r.text();
+        try { return JSON.parse(text); } catch (e) { return text; }
+      }).catch(err => console.error('Sheets Error:', err))
     );
 
     // Supabase Submit
