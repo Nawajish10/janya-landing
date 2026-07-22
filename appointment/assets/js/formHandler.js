@@ -123,7 +123,6 @@ function initFormHandler() {
       const success = await LeadService.submitLead(payload);
 
       if (success) {
-        showMessage('success');
         Storage.clearForm();
         Tracking.formSuccess(formId, `lead_${Date.now()}`);
 
@@ -132,10 +131,8 @@ function initFormHandler() {
           window.history.replaceState({}, document.title, window.location.pathname);
         }
 
-        // Redirect to Thank You page
-        setTimeout(() => {
-          window.location.href = 'https://janyafertility.in/thankyou';
-        }, 500);
+        // Redirect immediately to Thank You page (no popup message)
+        window.location.href = 'https://janyafertility.in/thankyou';
       } else {
         // If backend failed
         showMessage('error');
