@@ -5,7 +5,7 @@
  * ============================================================
  */
 
-import { CONFIG } from '../config.js';
+import { CONFIG } from './config.js';
 import { Tracking } from './tracking.js';
 
 export const LeadService = (() => {

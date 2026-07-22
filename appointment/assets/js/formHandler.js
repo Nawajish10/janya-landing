@@ -5,7 +5,7 @@
  * ============================================================
  */
 
-import { CONFIG } from '../config.js';
+import { CONFIG } from './config.js';
 import { LeadService } from './leadService.js';
 import { Storage } from './storage.js';
 import { UTM } from './utm.js';
