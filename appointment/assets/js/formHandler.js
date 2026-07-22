@@ -127,10 +127,15 @@ function initFormHandler() {
         Storage.clearForm();
         Tracking.formSuccess(formId, `lead_${Date.now()}`);
 
+        // Immediately clean address bar if any query params existed
+        if (window.location.search) {
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
         // Redirect to Thank You page
         setTimeout(() => {
           window.location.href = 'https://janyafertility.in/thankyou';
-        }, 800);
+        }, 500);
       } else {
         // If backend failed
         showMessage('error');

@@ -48,6 +48,11 @@ const JanyaApp = (() => {
    * Initialize all application modules
    */
   function init() {
+    // Clean up any leftover GET form query parameters from the address bar
+    if (window.location.search && window.location.search.includes('phone=')) {
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
     cacheDom();
 
     // Core UI behaviors
