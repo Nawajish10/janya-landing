@@ -18,9 +18,10 @@ const JanyaApp = (() => {
     intersectionThreshold: 0.15,
     intersectionRootMargin: '0px 0px -60px 0px',
     debounceDelay: 100,
-    phoneNumber: '+91XXXXXXXXXX',      // Replace with actual
-    whatsappNumber: '91XXXXXXXXXX',    // Replace with actual
-    whatsappMessage: 'Hi, I would like to book an appointment at Janya Fertility.',
+    phoneNumber: '+919731441111',
+    whatsappNumber: '919731441111',
+    whatsappMessage: 'I would like to book an appointment.',
+    whatsappUrl: 'https://wa.me/919731441111?text=I%20would%20like%20to%20book%20an%20appointment.',
     clinicName: 'Janya Fertility',
     appointmentUrl: '#appointment-form',
   });

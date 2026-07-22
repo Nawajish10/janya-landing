@@ -38,7 +38,12 @@ export const CONFIG = {
   TRACKING_ENABLED: true,
   
   // Storage
-  STORAGE_KEY: 'janya_lead_form_data'
+  STORAGE_KEY: 'janya_lead_form_data',
+
+  // WhatsApp Configuration
+  WHATSAPP_NUMBER: '919731441111',
+  WHATSAPP_MESSAGE: 'I would like to book an appointment.',
+  WHATSAPP_URL: 'https://wa.me/919731441111?text=I%20would%20like%20to%20book%20an%20appointment.'
 };
 
 /**
