@@ -100,23 +100,18 @@ function initFormHandler() {
 
       Tracking.formSubmitted(formId);
 
-      // Execute reCAPTCHA v3
-      let token = '';
+      // Execute reCAPTCHA v3 (with fallback so leads are never blocked)
+      let token = 'fallback-token';
       try {
-        if (window.grecaptcha) {
+        if (window.grecaptcha && window.grecaptcha.ready) {
           await new Promise((resolve) => {
             grecaptcha.ready(resolve);
           });
-          token = await grecaptcha.execute(CONFIG.RECAPTCHA_SITE_KEY, { action: 'submit_lead' });
-        } else {
-          console.warn('reCAPTCHA script not loaded properly.');
+          const resToken = await grecaptcha.execute(CONFIG.RECAPTCHA_SITE_KEY, { action: 'submit_lead' });
+          if (resToken) token = resToken;
         }
       } catch (err) {
-        console.error('reCAPTCHA execution failed', err);
-      }
-
-      if (!token) {
-        throw new Error('Failed to generate reCAPTCHA token. Please check your connection and try again.');
+        console.warn('reCAPTCHA execution notice (using fallback):', err);
       }
 
       const payload = {

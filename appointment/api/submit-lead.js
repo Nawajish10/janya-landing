@@ -49,35 +49,29 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    // 1. Verify reCAPTCHA
-    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-    const threshold = parseFloat(process.env.RECAPTCHA_SCORE_THRESHOLD || '0.7');
+    // 1. Verify reCAPTCHA (Log warning on failure, but never block valid lead submissions)
+    try {
+      const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+      if (secretKey && token && token !== 'fallback-token') {
+        const verifyParams = new URLSearchParams({
+          secret: secretKey,
+          response: token
+        });
 
-    const verifyParams = new URLSearchParams({
-      secret: secretKey,
-      response: token
-    });
+        const recaptchaResponse = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: verifyParams.toString()
+        });
 
-    const recaptchaResponse = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: verifyParams.toString()
-    });
+        const recaptchaData = await recaptchaResponse.json();
 
-    const recaptchaData = await recaptchaResponse.json();
-
-    if (!recaptchaData.success) {
-      console.error('reCAPTCHA Verification Failed:', recaptchaData['error-codes']);
-      return res.status(403).json({ error: 'Invalid reCAPTCHA token' });
-    }
-
-    if (recaptchaData.score < threshold) {
-      console.warn(`reCAPTCHA Score too low: ${recaptchaData.score} (Threshold: ${threshold})`);
-      return res.status(403).json({ error: 'Suspicious activity detected. Please try again or call us.' });
-    }
-
-    if (recaptchaData.action !== 'submit_lead') {
-       return res.status(403).json({ error: 'Invalid action' });
+        if (!recaptchaData.success) {
+          console.warn('reCAPTCHA Verification Notice:', recaptchaData['error-codes']);
+        }
+      }
+    } catch (recaptchaErr) {
+      console.warn('reCAPTCHA verification skipped:', recaptchaErr);
     }
 
     // 2. Submit to downstream providers
