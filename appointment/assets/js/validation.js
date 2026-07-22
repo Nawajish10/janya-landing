@@ -78,6 +78,12 @@ const JanyaValidation = (() => {
     forms.forEach(form => attachValidation(form));
   }
 
+  document.addEventListener('dynamicFormRendered', (e) => {
+    const formId = e.detail && e.detail.formId;
+    const form = formId ? document.getElementById(formId) : document.querySelector('form[data-validate]');
+    if (form) attachValidation(form);
+  });
+
   /**
    * Attach validation to a single form
    */

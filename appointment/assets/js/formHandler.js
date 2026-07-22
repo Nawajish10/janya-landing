@@ -11,9 +11,10 @@ import { Storage } from './storage.js';
 import { UTM } from './utm.js';
 import { Tracking } from './tracking.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+function initFormHandler() {
   const form = document.getElementById('appointment-form-el');
-  if (!form) return;
+  if (!form || form.dataset.handlerBound) return;
+  form.dataset.handlerBound = 'true';
 
   // Initialize auto-save
   Storage.bindAutoSave(form);
@@ -148,5 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setLoading(false);
     }
   });
+}
 
-});
+document.addEventListener('DOMContentLoaded', initFormHandler);
+document.addEventListener('dynamicFormRendered', initFormHandler);
