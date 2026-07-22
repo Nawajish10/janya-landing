@@ -126,6 +126,11 @@ function initFormHandler() {
         showMessage('success');
         Storage.clearForm();
         Tracking.formSuccess(formId, `lead_${Date.now()}`);
+
+        // Redirect to Thank You page
+        setTimeout(() => {
+          window.location.href = 'https://janyafertility.in/thankyou';
+        }, 800);
       } else {
         // If backend failed
         showMessage('error');

@@ -114,7 +114,9 @@ const heroFormConfig = {
   attributes: {
     "data-validate": "true",
     "data-form-name": "hero-appointment",
-    "novalidate": "true"
+    "novalidate": "true",
+    "method": "POST",
+    "action": "javascript:void(0);"
   },
   fields: [
     { type: "text", name: "name", id: "form-name", label: "Full Name", placeholder: "Enter your full name", required: true, rules: "required|name", autocomplete: "name" },
