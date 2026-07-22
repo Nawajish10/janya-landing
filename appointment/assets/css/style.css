@@ -356,7 +356,7 @@ strong, b {
    ============================================================ */
 
 .site-main {
-  margin-top: var(--header-height);
+  margin-top: 0;
 }
 
 
