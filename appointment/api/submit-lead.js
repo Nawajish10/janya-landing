@@ -161,7 +161,7 @@ module.exports = async function handler(req, res) {
           headers: {
             'Content-Type': 'application/json',
             'apikey': SUPABASE_ANON_KEY,
-            'Authorization': \`Bearer \${SUPABASE_ANON_KEY}\`,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
             'Prefer': 'return=minimal'
           },
           body: JSON.stringify(lead)
