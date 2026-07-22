@@ -498,11 +498,11 @@
     background: 
       linear-gradient(to bottom, 
         rgba(255,255,255,1) 0%, 
-        rgba(255,255,255,0.95) 50%, 
-        rgba(255,255,255,0.5) 80%, 
+        rgba(255,255,255,0.92) 40%, 
+        rgba(255,255,255,0.5) 75%, 
         rgba(255,255,255,0) 100%), 
       url('../images/hero/hero-new.png') no-repeat bottom center/cover !important;
-    padding-bottom: 40px;
+    padding-bottom: 260px !important;
   }
   .hero__content {
     max-width: 100%;
@@ -542,8 +542,14 @@
 
   /* 2. Hero Section Optimization */
   .hero {
-    padding: calc(60px + 16px) 0 24px !important;
-    background: linear-gradient(180deg, #ffffff 0%, #f0f4ff 100%) !important;
+    padding: calc(60px + 16px) 0 260px !important;
+    background: 
+      linear-gradient(to bottom, 
+        rgba(255,255,255,1) 0%, 
+        rgba(255,255,255,0.92) 40%, 
+        rgba(255,255,255,0.5) 75%, 
+        rgba(255,255,255,0) 100%), 
+      url('../images/hero/hero-new.png') no-repeat bottom center/cover !important;
   }
   .hero__inner {
     grid-template-columns: 1fr !important;

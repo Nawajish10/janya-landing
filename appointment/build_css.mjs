@@ -26,9 +26,10 @@ fs.writeFileSync(path.join(cssDir, 'style.min.css'), minified);
 console.log('Combined CSS saved to style.min.css (Size:', (minified.length / 1024).toFixed(2), 'KB)');
 
 let html = fs.readFileSync(htmlPath, 'utf8');
+const htmlCss = minified.replace(/\.\.\/images\//g, 'assets/images/');
 html = html.replace(
   /<style id="critical-css">[\s\S]*?<\/style>/,
-  `<style id="critical-css">${minified}</style>`
+  `<style id="critical-css">${htmlCss}</style>`
 );
 
 fs.writeFileSync(htmlPath, html);
