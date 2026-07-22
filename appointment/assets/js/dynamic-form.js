@@ -97,6 +97,7 @@ class DynamicForm {
                              placeholder="${field.placeholder || ''}" 
                              ${field.rules ? `data-rules="${field.rules}"` : ''} 
                              ${field.autocomplete ? `autocomplete="${field.autocomplete}"` : ''}
+                             ${field.inputmode ? `inputmode="${field.inputmode}"` : ''}
                              ${field.maxlength ? `maxlength="${field.maxlength}"` : ''}>`;
       }
     }
@@ -120,7 +121,7 @@ const heroFormConfig = {
   },
   fields: [
     { type: "text", name: "name", id: "form-name", label: "Full Name", placeholder: "Enter your full name", required: true, rules: "required|name", autocomplete: "name" },
-    { type: "tel", name: "phone", id: "form-phone", label: "Phone Number", placeholder: "Enter 10-digit mobile number", required: true, rules: "required|indianPhone", autocomplete: "tel", maxlength: "10" },
+    { type: "tel", name: "phone", id: "form-phone", label: "Phone Number", placeholder: "Enter 10-digit mobile number", required: true, rules: "required|indianPhone", autocomplete: "tel", inputmode: "numeric", maxlength: "10" },
     { type: "email", name: "email", id: "form-email", label: "Email", placeholder: "Enter your email address", required: false, rules: "email", autocomplete: "email" },
     {
       type: "select", name: "treatment", id: "form-treatment", label: "Treatment Interested In", required: true, rules: "required",
