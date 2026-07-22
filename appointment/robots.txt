@@ -1,0 +1,12 @@
+# Janya Fertility — Google Ads Landing Page
+# https://janyafertility.in/appointment/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://janyafertility.in/appointment/sitemap.xml
+
+# Block crawling of asset directories
+User-agent: *
+Disallow: /assets/js/
+Disallow: /assets/fonts/

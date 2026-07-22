@@ -1,0 +1,511 @@
+/* ============================================================
+   JANYA FERTILITY — Responsive Styles (responsive.css)
+   Mobile-first breakpoint overrides.
+   ============================================================ */
+
+
+/* ============================================================
+   BASE (Mobile-first — 0px and up)
+   All mobile styles are defined in style.css and components.css.
+   ============================================================ */
+
+
+/* ============================================================
+   SMALL DEVICES — 576px+
+   ============================================================ */
+
+@media (min-width: 576px) {
+
+  .grid-2-sm { grid-template-columns: repeat(2, 1fr); }
+
+  .sticky-cta__inner {
+    gap: var(--space-5);
+  }
+}
+
+
+/* ============================================================
+   MEDIUM DEVICES / TABLETS — 768px+
+   ============================================================ */
+
+@media (min-width: 768px) {
+
+  /* Grid */
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3-md { grid-template-columns: repeat(3, 1fr); }
+
+  /* Section Heading */
+  .section-heading {
+    margin-bottom: var(--space-16);
+  }
+
+  /* Feature Cards — 2-col */
+  .feature-card {
+    padding: var(--space-8) var(--space-6);
+  }
+
+  /* Footer */
+  .site-footer__top {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Stat cards — row */
+  .stat-card {
+    padding: var(--space-8) var(--space-6);
+  }
+
+  /* Toast — wider */
+  .toast {
+    min-width: 360px;
+  }
+
+  /* Floating buttons — slightly larger */
+  .floating-btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  .floating-btn svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+
+/* ============================================================
+   LARGE DEVICES / DESKTOP — 1024px+
+   ============================================================ */
+
+@media (min-width: 1024px) {
+
+  /* Navigation — show full nav, hide hamburger */
+  .site-nav {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  /* Grid */
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-4-lg { grid-template-columns: repeat(4, 1fr); }
+
+  /* Footer — full 4-col layout */
+  .site-footer__top {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+
+  /* Sticky CTA — text alongside button */
+  .sticky-cta__inner {
+    justify-content: space-between;
+  }
+}
+
+
+/* ============================================================
+   EXTRA LARGE — 1280px+
+   ============================================================ */
+
+@media (min-width: 1280px) {
+
+  /* Cards can breathe more */
+  .feature-card {
+    padding: var(--space-10) var(--space-8);
+  }
+
+  .review-card {
+    padding: var(--space-8);
+  }
+}
+
+
+/* ============================================================
+   BELOW DESKTOP — max 1023px (tablet & mobile)
+   ============================================================ */
+
+@media (max-width: 1023px) {
+
+  /* Show hamburger */
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Mobile Navigation Drawer */
+  .site-nav {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-4) var(--container-padding);
+    background-color: var(--color-white);
+    border-top: 1px solid var(--header-border);
+    transform: translateX(100%);
+    transition: transform var(--duration-normal) var(--ease-default);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: var(--z-modal);
+  }
+
+  .site-nav.is-open {
+    transform: translateX(0);
+  }
+
+  .site-nav__link {
+    font-size: var(--font-size-body);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+  }
+
+  /* Header actions — hide CTA text on mobile */
+  .site-header__actions .btn span.hide-mobile {
+    display: none;
+  }
+
+  .treatments-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .location-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================================
+   BELOW TABLET — max 767px (phones)
+   ============================================================ */
+
+@media (max-width: 767px) {
+
+  /* Grid fallback to single column */
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .doctors-grid,
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .treatments-grid,
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .location-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+/* Trust Signals Breakpoint Matrix */
+@media (min-width: 1400px) {
+  .trust-signals__grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1399px) {
+  .trust-signals__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .trust-signals__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+@media (max-width: 479px) {
+  .trust-signals__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}
+
+  /* Section padding */
+  .section {
+    padding-block: var(--space-10);
+  }
+
+  /* Section heading */
+  .section-heading {
+    margin-bottom: var(--space-8);
+  }
+  
+  /* Hero Section */
+  .hero {
+    padding-top: var(--space-8);
+  }
+  
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  
+  .hero__title {
+    font-size: var(--font-size-h1);
+  }
+  
+  .hero__ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .hero__ctas .btn {
+    width: 100%;
+    height: 56px; /* Larger touch target */
+  }
+
+
+  /* Journey Timeline */
+  .journey-timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-6);
+    padding-left: var(--space-4);
+  }
+  
+  .journey-step {
+    flex-direction: row;
+    text-align: left;
+    padding: 0;
+    gap: var(--space-4);
+  }
+  
+  .journey-step__connector {
+    display: block !important;
+    top: 56px;
+    left: 27px;
+    width: 2px;
+    height: calc(100% + var(--space-6));
+  }
+  
+  .journey-step__number {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  
+  .journey-step__text {
+    max-width: none;
+  }
+  
+  /* Final CTA */
+  .final-cta__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .final-cta__actions .btn {
+    width: 100%;
+    height: 56px; /* Larger touch target */
+  }
+
+  /* Footer — stack to 1 column */
+  .site-footer {
+    padding-bottom: 80px; /* Space for mobile CTA */
+  }
+
+  .site-footer__top {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .site-footer__bottom {
+    flex-direction: column;
+    gap: var(--space-3);
+    text-align: center;
+  }
+
+  /* Floating buttons / Sticky CTA — Hide desktop versions */
+  .desktop-sticky-cta,
+  .desktop-floating {
+    display: none !important;
+  }
+  
+  /* Show mobile CTA */
+  .mobile-cta {
+    display: flex;
+  }
+
+  /* Toast — full width on mobile */
+  .toast {
+    left: var(--space-4);
+    right: var(--space-4);
+    min-width: auto;
+    max-width: none;
+  }
+
+  /* Doctor Card — constrained width */
+  .doctor-card {
+    max-width: 340px;
+    margin-inline: auto;
+  }
+
+  /* Form */
+  .form-group {
+    margin-bottom: var(--space-4);
+  }
+
+  /* Cards */
+  .card {
+    padding: var(--space-5);
+  }
+
+  .feature-card {
+    padding: var(--space-6);
+  }
+}
+
+
+/* ============================================================
+   SMALL PHONES — max 375px
+   ============================================================ */
+
+@media (max-width: 375px) {
+
+  .site-header__logo img {
+    height: 32px;
+  }
+
+  .btn-cta {
+    font-size: var(--font-size-body);
+    padding: 0 var(--btn-padding-x-lg);
+    height: var(--btn-height-lg);
+  }
+}
+
+
+/* ============================================================
+   HIGH DPI / RETINA
+   ============================================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Retina-specific adjustments if needed */
+}
+
+
+/* ============================================================
+   LANDSCAPE PHONE
+   ============================================================ */
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .site-nav {
+    padding-block: var(--space-2);
+  }
+
+  .site-nav__link {
+    padding-block: var(--space-2);
+  }
+}
+
+
+/* ============================================================
+   HOVER CAPABLE DEVICES ONLY
+   ============================================================ */
+
+@media (hover: hover) and (pointer: fine) {
+  .feature-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .anim-hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card-hover);
+  }
+}
+
+/* Touch devices — no hover transforms */
+@media (hover: none) {
+  .feature-card:hover,
+  .anim-hover-lift:hover {
+    transform: none;
+  }
+}
+
+/* Hero 3-column Layout overrides */
+@media (min-width: 1024px) {
+  .hero__inner {
+    grid-template-columns: 1.1fr 1.2fr 1fr;
+    gap: var(--space-8);
+  }
+}
+@media (max-width: 1023px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+  }
+  .hero__image-wrapper {
+    min-height: 300px;
+    margin: var(--space-6) 0;
+  }
+  .hero-floating-card:nth-child(2) {
+    top: 5%; left: -5%;
+  }
+  .hero-floating-card:nth-child(3) {
+    bottom: 10%; right: -5%;
+  }
+  .hero-floating-card:nth-child(4) {
+    bottom: 2%; left: 5%;
+  }
+}
+
+/* Revert to 2-column Layout */
+@media (min-width: 1024px) {
+  .hero__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+  }
+}
+@media (max-width: 1023px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Overriding to 55/45 Layout */
+@media (min-width: 1024px) {
+  .hero__inner {
+    grid-template-columns: 55fr 45fr;
+    align-items: flex-start;
+  }
+}
+
+/* Override Grid for Unified Hero */
+@media (min-width: 1024px) {
+  .hero__inner {
+    display: block; /* Remove grid */
+  }
+}
+
+/* Mobile Adjustments for Unified Hero */
+@media (max-width: 1023px) {
+  .hero {
+    /* Top to bottom gradient on mobile so image is visible at the bottom */
+    background: 
+      linear-gradient(to bottom, 
+        rgba(255,255,255,1) 0%, 
+        rgba(255,255,255,0.95) 50%, 
+        rgba(255,255,255,0.5) 80%, 
+        rgba(255,255,255,0) 100%), 
+      url('../images/hero/hero-new.png') no-repeat bottom center/cover !important;
+    padding-bottom: 250px; /* Give space for image at the bottom */
+  }
+  .hero__content {
+    max-width: 100%;
+  }
+}
